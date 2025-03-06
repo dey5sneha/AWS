@@ -1,0 +1,81 @@
+name: task04
+build_projects_mapping:
+  nodejs: app
+lambdas:
+  sns_handler:
+    runtime: nodejs
+  sqs_handler:
+    runtime: nodejs
+locks:
+  modification_lock:
+    last_modification_date: '2025-03-06T08:52:29Z'
+    is_locked: false
+    initiator: sneha_dey
+events:
+- operation: deploy
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  deploy_name: task04
+  time_start: '2025-03-06T14:22:18Z'
+  time_end: '2025-03-06T14:22:29Z'
+  duration_sec: 10.424
+  status: succeeded
+  rollback_on_error: false
+- operation: deploy
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  deploy_name: task04
+  time_start: '2025-03-06T13:12:59Z'
+  time_end: '2025-03-06T14:11:24Z'
+  duration_sec: 3504.417
+  status: failed
+  rollback_on_error: false
+- operation: build
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  time_start: '2025-03-06T13:12:39Z'
+  time_end: '2025-03-06T13:12:44Z'
+  duration_sec: 5.816
+  status: succeeded
+- operation: upload
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  time_start: '2025-03-06T13:12:42Z'
+  time_end: '2025-03-06T13:12:44Z'
+  duration_sec: 2.03
+  status: succeeded
+- operation: package_meta
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  time_start: '2025-03-06T13:12:42Z'
+  time_end: '2025-03-06T13:12:42Z'
+  duration_sec: 0.005
+  status: succeeded
+- operation: assemble
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  time_start: '2025-03-06T13:12:40Z'
+  time_end: '2025-03-06T13:12:42Z'
+  duration_sec: 2.321
+  status: succeeded
+- operation: assemble_node
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  time_start: '2025-03-06T13:12:40Z'
+  time_end: '2025-03-06T13:12:42Z'
+  duration_sec: 2.314
+  status: succeeded
+- operation: test
+  initiator: sneha_dey
+  time_start: '2025-03-06T13:12:40Z'
+  time_end: '2025-03-06T13:12:40Z'
+  duration_sec: 0.002
+  status: succeeded
+latest_deploy:
+  initiator: sneha_dey
+  bundle_name: task04_250306.131239
+  deploy_name: task04
+  time_start: '2025-03-06T14:22:18Z'
+  time_end: '2025-03-06T14:22:29Z'
+  duration_sec: 10.424
+  is_succeeded: true
