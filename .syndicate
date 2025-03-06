@@ -1,0 +1,49 @@
+name: AWS
+build_projects_mapping:
+  nodejs: app
+lambdas:
+  hello_world:
+    runtime: nodejs
+locks:
+  modification_lock:
+    last_modification_date: '2025-03-06T06:21:54Z'
+    is_locked: false
+    initiator: sneha_dey
+events:
+- operation: deploy
+  initiator: sneha_dey
+  bundle_name: AWS_250306.115104
+  deploy_name: a-w-s
+  time_start: '2025-03-06T11:51:52Z'
+  time_end: '2025-03-06T11:51:54Z'
+  duration_sec: 1.581
+  status: aborted
+  rollback_on_error: false
+- operation: package_meta
+  initiator: sneha_dey
+  bundle_name: AWS_250306.115104
+  time_start: '2025-03-06T11:51:08Z'
+  time_end: '2025-03-06T11:51:08Z'
+  duration_sec: 0.016
+  status: failed
+- operation: assemble
+  initiator: sneha_dey
+  bundle_name: AWS_250306.115104
+  time_start: '2025-03-06T11:51:05Z'
+  time_end: '2025-03-06T11:51:08Z'
+  duration_sec: 2.549
+  status: succeeded
+- operation: assemble_node
+  initiator: sneha_dey
+  bundle_name: AWS_250306.115104
+  time_start: '2025-03-06T11:51:05Z'
+  time_end: '2025-03-06T11:51:08Z'
+  duration_sec: 2.54
+  status: succeeded
+- operation: test
+  initiator: sneha_dey
+  time_start: '2025-03-06T11:51:05Z'
+  time_end: '2025-03-06T11:51:05Z'
+  duration_sec: 0.001
+  status: succeeded
+latest_deploy: {}
