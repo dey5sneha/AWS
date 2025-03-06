@@ -1,1 +1,8 @@
-exports.handler = async (event) => {        return {            statusCode: 200,            body: JSON.stringify({statusCode:200, message: "Hello from Lambda" }), // Removed duplicate statusCode        };};syndicate build
+exports.handler = async (event) => {
+      return {
+                 statusCode: 200,
+                 body: JSON.stringify({statusCode:200, message: "Hello from Lambda" }),
+
+      };
+};
+
