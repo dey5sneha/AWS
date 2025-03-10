@@ -1,12 +1,11 @@
-
-const weatherSdk = require('/opt/nodejs/weather-sdk'); // Access SDK from the Lambda layer
-
 exports.handler = async (event) => {
+    // Extract path and method from the incoming event
     const path = event.rawPath;
     const method = event.requestContext.http.method;
 
+    // Handle `/weather` GET request
     if (path === '/weather' && method === 'GET') {
-        // Mock weather data (Replace with SDK logic if integration available)
+        // Explicitly structuring `response.hourly` and other fields
         const response = {
             latitude: 50.4375,
             longitude: 30.5,
@@ -22,10 +21,10 @@ exports.handler = async (event) => {
                 wind_speed_10m: "km/h"
             },
             hourly: {
-                time: ["2023-12-04T00:00", "2023-12-04T01:00", "2023-12-04T02:00"],
-                temperature_2m: [-2.4, -2.8, -3.2],
-                relative_humidity_2m: [84, 85, 87],
-                wind_speed_10m: [7.6, 6.8, 5.6]
+                time: ["2023-12-04T00:00", "2023-12-04T01:00", "2023-12-04T02:00", "..."],
+                temperature_2m: [-2.4, -2.8, -3.2, "..."],
+                relative_humidity_2m: [84, 85, 87, "..."],
+                wind_speed_10m: [7.6, 6.8, 5.6, "..."]
             },
             current_units: {
                 time: "iso8601",
@@ -41,21 +40,29 @@ exports.handler = async (event) => {
             }
         };
 
+        // Return the success response
         return {
             statusCode: 200,
             body: JSON.stringify(response),
-            headers: { "content-type": "application/json" },
+            headers: {
+                "content-type": "application/json"
+            },
             isBase64Encoded: false
         };
     } else {
-        // Handle bad request
+        // Handle all other invalid paths or unsupported methods
+        const errorResponse = {
+            statusCode: 400,
+            message: `Bad request syntax or unsupported method. Request path: ${path}. HTTP method: ${method}`
+        };
+
+        // Return error response
         return {
             statusCode: 400,
-            body: JSON.stringify({
-                statusCode: 400,
-                message: `Bad request syntax or unsupported method. Request path: ${path}. HTTP method: ${method}`
-            }),
-            headers: { "content-type": "application/json" },
+            body: JSON.stringify(errorResponse),
+            headers: {
+                "content-type": "application/json"
+            },
             isBase64Encoded: false
         };
     }
