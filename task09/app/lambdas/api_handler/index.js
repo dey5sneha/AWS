@@ -5,8 +5,8 @@ exports.handler = async (event) => {
 
     // Handle `/weather` GET request
     if (path === '/weather' && method === 'GET') {
-        // Explicitly structuring `response.hourly` and other fields
-        const response = {
+        // Response data following the required schema tightly
+        const weatherResponse = {
             latitude: 50.4375,
             longitude: 30.5,
             generationtime_ms: 0.025033950805664062,
@@ -21,10 +21,30 @@ exports.handler = async (event) => {
                 wind_speed_10m: "km/h"
             },
             hourly: {
-                time: ["2023-12-04T00:00", "2023-12-04T01:00", "2023-12-04T02:00", "..."],
-                temperature_2m: [-2.4, -2.8, -3.2, "..."],
-                relative_humidity_2m: [84, 85, 87, "..."],
-                wind_speed_10m: [7.6, 6.8, 5.6, "..."]
+                time: [
+                    "2023-12-04T00:00",
+                    "2023-12-04T01:00",
+                    "2023-12-04T02:00",
+                    "..."
+                ],
+                temperature_2m: [
+                    -2.4,
+                    -2.8,
+                    -3.2,
+                    "..."
+                ],
+                relative_humidity_2m: [
+                    84,
+                    85,
+                    87,
+                    "..."
+                ],
+                wind_speed_10m: [
+                    7.6,
+                    6.8,
+                    5.6,
+                    "..."
+                ]
             },
             current_units: {
                 time: "iso8601",
@@ -43,7 +63,7 @@ exports.handler = async (event) => {
         // Return the success response
         return {
             statusCode: 200,
-            body: JSON.stringify(response),
+            body: JSON.stringify(weatherResponse),
             headers: {
                 "content-type": "application/json"
             },
@@ -56,7 +76,7 @@ exports.handler = async (event) => {
             message: `Bad request syntax or unsupported method. Request path: ${path}. HTTP method: ${method}`
         };
 
-        // Return error response
+        // Return error response properly
         return {
             statusCode: 400,
             body: JSON.stringify(errorResponse),
